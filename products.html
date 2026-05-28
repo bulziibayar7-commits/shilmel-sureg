@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Бүтээгдэхүүн - Шилмэл сүрэг</title>
+  <meta name="description" content="Монгол үхрийн шилмэл мах, steak бүтээгдэхүүн. Чанарын баталгаатай." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Top Banner -->
+  <div class="top-banner">100'000₮ дээш худалдан авалтад хүргэлт үнэгүй</div>
+
+  <div class="page-shell">
+    <!-- Header -->
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Шилмэл сүрэг home">
+        <div class="brand-text">
+          <strong>Шилмэл сүрэг</strong>
+          <span>Монголын бүтээгдэхүүн</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Нүүр</a>
+        <a href="index.html#about">Бидний тухай</a>
+        <a href="products.html">Бүтээгдэхүүн</a>
+        <a href="steak-lodge.html">Steak Lodge</a>
+        <a href="index.html#contact">Холбоо барих</a>
+      </nav>
+
+      <div class="header-actions">
+        <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <div class="cart-btn">
+          <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </div>
+        <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div class="lang-switch">
+          <button id="mnBtn" type="button" class="active">mn</button>
+          <button id="enBtn" type="button">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Online Ordering -->
+    <section id="products" class="section section-alt">
+      <div class="ordering-layout">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+          <div class="filter-section">
+            <h4>ЭРЭМБЭЛЭХ</h4>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Үнэ багаас их</span>
+              </div>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+                <span>Үнэ ихээс бага</span>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="filter-section">
+            <h4>АНГИЛАЛ</h4>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Цул мах</span>
+              </div>
+              <span class="filter-count">9</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>Стэйк</span>
+              </div>
+              <span class="filter-count">3</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Багц бүтээгдэхүүн</span>
+              </div>
+              <span class="filter-count">1</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>Ястай мах</span>
+              </div>
+              <span class="filter-count">1</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="filter-section">
+            <h4>ЖИН</h4>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>500гр</span>
+              </div>
+              <span class="filter-count">4</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>800гр</span>
+              </div>
+              <span class="filter-count">1</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>1кг</span>
+              </div>
+              <span class="filter-count">4</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>3кг</span>
+              </div>
+              <span class="filter-count">4</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>5кг</span>
+              </div>
+              <span class="filter-count">1</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>L/400гр-450гр/</span>
+              </div>
+              <span class="filter-count">2</span>
+            </div>
+            <div class="filter-option">
+              <div class="filter-option-left">
+                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                <span>L/530гр-565гр/</span>
+              </div>
+              <span class="filter-count">1</span>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Products Grid -->
+        <div class="products-area">
+          <div class="products-grid">
+            <article class="product-card">
+              <div class="product-image"><img src="images/product-1.jpg" alt="Хүүхдийн багц" /></div>
+              <div class="product-info">
+                <h4 class="product-name">ХҮҮХДИЙН БАГЦ</h4>
+                <span class="product-category">БАГЦ БҮТЭЭГДЭХҮҮН</span>
+                <span class="product-price">184,140₮</span>
+                <div class="product-weight-row">
+                  <span class="product-weight">9 бүтээгдэхүүн багтсан</span>
+                  <span class="product-unit-price">184,140₮</span>
+                </div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-image"><img src="images/product-2.jpg" alt="Бантангийн мах" /></div>
+              <div class="product-info">
+                <h4 class="product-name">БАНТАНГИЙН МАХ</h4>
+                <span class="product-category">ЦУЛ МАХ</span>
+                <span class="product-price">23,540₮</span>
+                <div class="product-weight-row">
+                  <span class="product-weight">500гр</span>
+                  <span class="product-unit-price">23,540₮</span>
+                </div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-image"><img src="images/product-3.jpg" alt="Нарийн мах" /></div>
+              <div class="product-info">
+                <h4 class="product-name">НАРИЙН МАХ</h4>
+                <span class="product-category">ЦУЛ МАХ</span>
+                <span class="product-price">23,210₮</span>
+                <div class="product-weight-row">
+                  <span class="product-weight">500гр</span>
+                  <span class="product-unit-price">23,210₮</span>
+                </div>
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="product-image"><img src="images/product-4.jpg" alt="Гуляшны мах" /></div>
+              <div class="product-info">
+                <h4 class="product-name">ГҮЛЯАШНЫ МАХ</h4>
+                <span class="product-category">ЦУЛ МАХ</span>
+                <span class="product-price">23,540₮</span>
+                <div class="product-weight-row">
+                  <span class="product-weight">500гр</span>
+                  <span class="product-unit-price">3кг - 118,300₮</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <p class="section-label">ОНЦЛОХ БҮТЭЭГДЭХҮҮН</p>
+          <h2>Шилмэл сонголт</h2>
+        </div>
+      </div>
+      <div class="products-grid">
+        <article class="product-card">
+          <div class="product-image"><img src="images/featured-1.jpg" alt="Булчингийн мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Булчингийн мах</h4>
+            <span class="product-price">155,000₮/кг</span>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="images/featured-2.jpg" alt="Гуяны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Гуяны мах</h4>
+            <span class="product-price">142,000₮/кг</span>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="images/featured-3.jpg" alt="Зооны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Зооны мах</h4>
+            <span class="product-price">168,000₮/кг</span>
+          </div>
+        </article>
+        <article class="product-card">
+          <div class="product-image"><img src="images/featured-4.jpg" alt="Хааны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Хааны мах</h4>
+            <span class="product-price">185,000₮/кг</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="section section-alt">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <p class="section-label">БҮТЭЭГДЭХҮҮНИЙ ДЭЛГЭРЭНГҮЙ</p>
+        <h2>Бидний бүтээгдэхүүн</h2>
+        <p class="section-lead" style="text-align: center; margin: 12px auto 0;">Монгол үхрийн шилмэл махыг биеийн хэсэг бүрээр ангилсан. Чанарын баталгаатай, HACCP стандартын дагуу бэлтгэгдсэн.</p>
+      </div>
+      <div class="detail-grid">
+        <article class="detail-card">
+          <div class="product-image"><img src="images/detail-1.jpg" alt="Булчингийн мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Булчингийн мах</h4>
+            <span class="product-price">155,000₮/кг</span>
+            <p class="product-desc">Шилмэл булчингийн хэсгүүд. Grill, pan-sear, oven roast хийхэд тохиромжтой.</p>
+            <button class="btn">Захиалах</button>
+          </div>
+        </article>
+        <article class="detail-card">
+          <div class="product-image"><img src="images/detail-2.jpg" alt="Гуяны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Гуяны мах</h4>
+            <span class="product-price">142,000₮/кг</span>
+            <p class="product-desc">Гуяны шилмэл мах. Гэр бүлийн хоол, slow cook хийхэд тохиромжтой.</p>
+            <button class="btn">Захиалах</button>
+          </div>
+        </article>
+        <article class="detail-card">
+          <div class="product-image"><img src="images/detail-3.jpg" alt="Зооны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Зооны мах</h4>
+            <span class="product-price">168,000₮/кг</span>
+            <p class="product-desc">Зооны шилмэл хэсэг. Steak, BBQ хийхэд хамгийн тохиромжтой.</p>
+            <button class="btn">Захиалах</button>
+          </div>
+        </article>
+        <article class="detail-card">
+          <div class="product-image"><img src="images/detail-4.jpg" alt="Хааны мах" /></div>
+          <div class="product-info">
+            <h4 class="product-name">Хааны мах</h4>
+            <span class="product-price">185,000₮/кг</span>
+            <p class="product-desc">Хамгийн шилмэл хэсэг. Premium steak, тусгай зоогийн өргөн сонголт.</p>
+            <button class="btn">Захиалах</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>Шилмэл сүрэг</strong>
+          <p>Эрүүл ахуйн шаардлага хангасан-Эрүүл хүнс</p>
+          <div class="social-row">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Тусламж</h4>
+          <a href="#">Үйлчилгээний нөхцөл</a>
+          <a href="#">Нууцлалын бодлого</a>
+          <a href="#">Хүргэлтийн нөхцөл</a>
+          <a href="#">Санал гомдол</a>
+        </div>
+        <div class="footer-links">
+          <h4>Холбоос</h4>
+          <a href="index.html">Нүүр</a>
+          <a href="products.html">Бүтээгдэхүүн</a>
+          <a href="steak-lodge.html">Steak Lodge</a>
+          <a href="index.html#contact">Холбоо барих</a>
+        </div>
+        <div class="footer-links">
+          <h4>Холбоо барих</h4>
+          <a href="tel:+97675332222">+976 7533 2222</a>
+          <a href="mailto:info.monbeef@tavanbogd.com">info.monbeef@tavanbogd.com</a>
+          <span style="color: #9a958c; font-size: 14px; line-height: 1.5;">Улаанбаатар, Баянгол дүүрэг, 25-р хороо, Үйлдвэрийн төвийн бүс-16010, Энхтайвны өргөн чөлөө 96</span>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span>© 2026 Шилмэл сүрэг. Бүх эрх хуулиар хамгаалагдсан.</span>
+        <span>Powered by Шилмэл сүрэг</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
