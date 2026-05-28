@@ -1,0 +1,15 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shilmel Sureg monogram logo">
+  <rect width="1024" height="1024" rx="240" fill="#F8FAF6"/>
+  <circle cx="512" cy="512" r="318" fill="#FFFFFF" stroke="#8A6D53" stroke-width="22"/>
+  <circle cx="512" cy="512" r="264" fill="url(#paint0_linear)" stroke="#B8C7AD" stroke-width="16"/>
+  <path d="M351 395C351 337 399 292 469 292C536 292 584 327 584 382C584 424 563 448 525 464C587 478 625 521 625 582C625 662 560 716 469 716C378 716 317 665 317 590H401C403 625 427 650 468 650C507 650 537 626 537 587C537 543 501 522 439 522H418V453H434C495 453 522 432 522 393C522 361 498 339 466 339C429 339 406 364 403 395H351Z" fill="#1D201A"/>
+  <path d="M560 395C560 337 608 292 678 292C745 292 793 327 793 382C793 424 772 448 734 464C796 478 834 521 834 582C834 662 769 716 678 716C587 716 526 665 526 590H610C612 625 636 650 677 650C716 650 746 626 746 587C746 543 710 522 648 522H627V453H643C704 453 731 432 731 393C731 361 707 339 675 339C638 339 615 364 612 395H560Z" fill="#8A6D53" opacity="0.92"/>
+  <path d="M308 768H716" stroke="#B8C7AD" stroke-width="18" stroke-linecap="round"/>
+  <path d="M356 808H668" stroke="#D9D1C2" stroke-width="10" stroke-linecap="round"/>
+  <defs>
+    <linearGradient id="paint0_linear" x1="352" y1="248" x2="672" y2="776" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EEF3EA"/>
+    </linearGradient>
+  </defs>
+</svg>
