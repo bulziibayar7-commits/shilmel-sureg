@@ -55,6 +55,41 @@
       width: 100%;
       height: 220px;
       object-fit: cover;
+      display: block;
+    }
+    
+    .recipe-img-wrapper {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: var(--orange-soft);
+      overflow: hidden;
+    }
+    
+    .recipe-img-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--orange);
+      background: linear-gradient(135deg, var(--orange-soft) 0%, #fff 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .recipe-img-wrapper.no-image .recipe-img-placeholder {
+      opacity: 1;
+    }
+    
+    .recipe-img-wrapper.no-image .recipe-image {
+      display: none;
     }
     
     .recipe-content {
@@ -206,7 +241,7 @@
   </style>
 </head>
 <body>
-  <div class="top-banner">100'000₮ дээш худалдан авалтад хүргэлт үнэгүй</div>
+  <div class="top-banner" data-translate="banner.shipping">100'000₮ дээш худалдан авалтад хүргэлт үнэгүй</div>
 
   <div class="page-shell">
     <header class="topbar">
@@ -219,12 +254,12 @@
       </a>
 
       <nav class="nav">
-        <a href="index.html">Нүүр</a>
-        <a href="index.html#about">Бидний тухай</a>
-        <a href="products.html">Бүтээгдэхүүн</a>
-        <a href="recipes.html">Жор</a>
-        <a href="steak-lodge.html">Steak Lodge</a>
-        <a href="index.html#contact">Холбоо барих</a>
+        <a href="index.html" data-translate="nav.home">Нүүр</a>
+        <a href="index.html#about" data-translate="nav.about">Бидний тухай</a>
+        <a href="products.html" data-translate="nav.products">Бүтээгдэхүүн</a>
+        <a href="recipes.html" data-translate="nav.recipes">Жор</a>
+        <a href="steak-lodge.html" data-translate="nav.steaklodge">Steak Lodge</a>
+        <a href="index.html#contact" data-translate="nav.contact">Холбоо барих</a>
       </nav>
 
       <div class="header-actions">
@@ -241,15 +276,18 @@
     </header>
 
     <section class="recipes-hero">
-      <h1>Амтат Жорууд</h1>
-      <p>Шилмэл сүргийн махаар хийсэн Монгол болон Европ хоолны жорууд</p>
+      <h1 data-translate="recipes.title">Амтат Жорууд</h1>
+      <p data-translate="recipes.subtitle">Шилмэл сүргийн махаар хийсэн Монгол болон Европ хоолны жорууд</p>
     </section>
 
     <section class="recipes-grid">
       <article class="recipe-card" data-recipe="1">
-        <img class="recipe-image" src="images/steak-recipe.jpg" alt="Стэйк хийх жор" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/hero-beef.jpg" alt="Стэйк хийх жор" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Стэйк</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Европ</span>
+          <span class="recipe-tag" data-translate="recipe.tag.european">Европ</span>
           <h3 class="recipe-title">Төгс Стэйк хийх жор</h3>
           <div class="recipe-meta">
             <span>⏱ 20 мин</span>
@@ -257,29 +295,35 @@
             <span>🔥 Дунд зэрэг</span>
           </div>
           <p class="recipe-desc">Гадуураа шарж, дотроо шүүслэг байхаар хийсэн төгс стэйк. Грилл эсвэл хайруулын тавган дээр хийж болно.</p>
-          <button class="recipe-btn" onclick="openRecipe(1)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(1)" data-translate="recipes.view" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="2">
-        <img class="recipe-image" src="images/buuz-recipe.jpg" alt="Буузны жор" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/product-1.jpg" alt="Буузны жор" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Бууз</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Монгол</span>
-          <h3 class="recipe-title">Тraditional Бууз</h3>
+          <span class="recipe-tag" data-translate="recipe.tag.mongolian">Монгол</span>
+          <h3 class="recipe-title">Traditional Бууз</h3>
           <div class="recipe-meta">
             <span>⏱ 90 мин</span>
             <span>👤 6-8 хүн</span>
             <span>🔥 Дунд зэрэг</span>
           </div>
           <p class="recipe-desc">Монгол гэрийн уламжлалт бууз. Шилмэл сүргийн махаар хийсэн амтат буузны жор.</p>
-          <button class="recipe-btn" onclick="openRecipe(2)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(2)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="3">
-        <img class="recipe-image" src="images/huushuur-recipe.jpg" alt="Хуушуурны жор" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/product-2.jpg" alt="Хуушуурны жор" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Хуушуур</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Монгол</span>
+          <span class="recipe-tag" data-translate="recipe.tag.mongolian">Монгол</span>
           <h3 class="recipe-title">Хуушуур</h3>
           <div class="recipe-meta">
             <span>⏱ 60 мин</span>
@@ -287,14 +331,17 @@
             <span>🔥 Дунд зэрэг</span>
           </div>
           <p class="recipe-desc">Шарсан шүүслэг хуушуур. Гэрийн нөхцөлд хийхэд тохиромжтой жор.</p>
-          <button class="recipe-btn" onclick="openRecipe(3)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(3)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="4">
-        <img class="recipe-image" src="images/beef-stroganoff-recipe.jpg" alt="Бeef Stroganoff" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/detail-2.jpg" alt="Beef Stroganoff" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Beef Stroganoff</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Европ</span>
+          <span class="recipe-tag" data-translate="recipe.tag.european">Европ</span>
           <h3 class="recipe-title">Beef Stroganoff</h3>
           <div class="recipe-meta">
             <span>⏱ 40 мин</span>
@@ -302,14 +349,17 @@
             <span>🔥 Дунд зэрэг</span>
           </div>
           <p class="recipe-desc">Орос гаралтай алдартай хоол. Шарсан махыг сметан соустай хослуулсан амтат хоол.</p>
-          <button class="recipe-btn" onclick="openRecipe(4)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(4)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="5">
-        <img class="recipe-image" src="images/tsuivan-recipe.jpg" alt="Цуйваны жор" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/product-3.jpg" alt="Цуйваны жор" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Цуйван</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Монгол</span>
+          <span class="recipe-tag" data-translate="recipe.tag.mongolian">Монгол</span>
           <h3 class="recipe-title">Махтай Цуйван</h3>
           <div class="recipe-meta">
             <span>⏱ 50 мин</span>
@@ -317,14 +367,17 @@
             <span>🔥 Хялбар</span>
           </div>
           <p class="recipe-desc">Монгол гэрийн цуйван. Гурил, мах, ногоог хослуулсан хоол.</p>
-          <button class="recipe-btn" onclick="openRecipe(5)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(5)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="6">
-        <img class="recipe-image" src="images/bolognese-recipe.jpg" alt="Болонезе" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/detail-3.jpg" alt="Болонезе" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Bolognese</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Европ</span>
+          <span class="recipe-tag" data-translate="recipe.tag.european">Европ</span>
           <h3 class="recipe-title">Махны Соустай Спагетти (Bolognese)</h3>
           <div class="recipe-meta">
             <span>⏱ 60 мин</span>
@@ -332,14 +385,17 @@
             <span>🔥 Дунд зэрэг</span>
           </div>
           <p class="recipe-desc">Италийн алдартай хоол. Шилмэл махаар хийсэн баялаг соустай спагетти.</p>
-          <button class="recipe-btn" onclick="openRecipe(6)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(6)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="7">
-        <img class="recipe-image" src="images/bantan-recipe.jpg" alt="Бантан" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/product-4.jpg" alt="Бантан" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Бантан</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Монгол</span>
+          <span class="recipe-tag" data-translate="recipe.tag.mongolian">Монгол</span>
           <h3 class="recipe-title">Махтай Бантан</h3>
           <div class="recipe-meta">
             <span>⏱ 45 мин</span>
@@ -347,14 +403,17 @@
             <span>🔥 Хялбар</span>
           </div>
           <p class="recipe-desc">Монголын уламжлалт бантан. Шилмэл махаар хийсэн шүүслэг бантан.</p>
-          <button class="recipe-btn" onclick="openRecipe(7)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(7)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="8">
-        <img class="recipe-image" src="images/roast-beef-recipe.jpg" alt="Roast Beef" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/featured-1.jpg" alt="Roast Beef" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Roast Beef</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Европ</span>
+          <span class="recipe-tag" data-translate="recipe.tag.european">Европ</span>
           <h3 class="recipe-title">Roast Beef</h3>
           <div class="recipe-meta">
             <span>⏱ 120 мин</span>
@@ -362,14 +421,17 @@
             <span>🔥 Хүнд</span>
           </div>
           <p class="recipe-desc">Шөөгтэй махыг зөвхөн духан дээр жигнэсэн Roast Beef. Тусгай зоогт тохиромжтой.</p>
-          <button class="recipe-btn" onclick="openRecipe(8)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(8)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="9">
-        <img class="recipe-image" src="images/khuushuur-recipe.jpg" alt="Хорхог" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/featured-2.jpg" alt="Хорхог" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Хорхог</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Монгол</span>
+          <span class="recipe-tag" data-translate="recipe.tag.mongolian">Монгол</span>
           <h3 class="recipe-title">Хорхог</h3>
           <div class="recipe-meta">
             <span>⏱ 90 мин</span>
@@ -377,14 +439,17 @@
             <span>🔥 Хүнд</span>
           </div>
           <p class="recipe-desc">Монголын уламжлалт хорхог. Чулуун дээр хийсэн онцгой амт.</p>
-          <button class="recipe-btn" onclick="openRecipe(9)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(9)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
 
       <article class="recipe-card" data-recipe="10">
-        <img class="recipe-image" src="images/tacos-recipe.jpg" alt="Махтай Такос" />
+        <div class="recipe-img-wrapper">
+          <img class="recipe-image" src="images/featured-3.jpg" alt="Махтай Такос" onerror="this.parentElement.classList.add('no-image')" />
+          <div class="recipe-img-placeholder">Такос</div>
+        </div>
         <div class="recipe-content">
-          <span class="recipe-tag">Европ</span>
+          <span class="recipe-tag" data-translate="recipe.tag.european">Европ</span>
           <h3 class="recipe-title">Махтай Такос</h3>
           <div class="recipe-meta">
             <span>⏱ 35 мин</span>
@@ -392,7 +457,7 @@
             <span>🔥 Хялбар</span>
           </div>
           <p class="recipe-desc">Мексикийн алдартай такос. Шилмэл махаар хийсэн амтат такосны жор.</p>
-          <button class="recipe-btn" onclick="openRecipe(10)">Жор харах</button>
+          <button class="recipe-btn" onclick="openRecipe(10)" data-translate="recipes.view">Жор харах</button>
         </div>
       </article>
     </section>
@@ -421,22 +486,22 @@
           </div>
         </div>
         <div class="footer-links">
-          <h4>Тусламж</h4>
-          <a href="#">Үйлчилгээний нөхцөл</a>
-          <a href="#">Нууцлалын бодлого</a>
-          <a href="#">Хүргэлтийн нөхцөл</a>
-          <a href="#">Санал гомдол</a>
+          <h4 data-translate="footer.help">Тусламж</h4>
+          <a href="#" data-translate="footer.terms">Үйлчилгээний нөхцөл</a>
+          <a href="#" data-translate="footer.privacy">Нууцлалын бодлого</a>
+          <a href="#" data-translate="footer.delivery">Хүргэлтийн нөхцөл</a>
+          <a href="#" data-translate="footer.feedback">Санал гомдол</a>
         </div>
         <div class="footer-links">
-          <h4>Холбоос</h4>
-          <a href="index.html">Нүүр</a>
-          <a href="products.html">Бүтээгдэхүүн</a>
-          <a href="recipes.html">Жор</a>
-          <a href="steak-lodge.html">Steak Lodge</a>
-          <a href="index.html#contact">Холбоо барих</a>
+          <h4 data-translate="footer.links">Холбоос</h4>
+          <a href="index.html" data-translate="nav.home">Нүүр</a>
+          <a href="products.html" data-translate="nav.products">Бүтээгдэхүүн</a>
+          <a href="recipes.html" data-translate="nav.recipes">Жор</a>
+          <a href="steak-lodge.html" data-translate="nav.steaklodge">Steak Lodge</a>
+          <a href="index.html#contact" data-translate="nav.contact">Холбоо барих</a>
         </div>
         <div class="footer-links">
-          <h4>Холбоо барих</h4>
+          <h4 data-translate="footer.contact">Холбоо барих</h4>
           <a href="tel:+97675332222">+976 7533 2222</a>
           <a href="mailto:info.monbeef@tavanbogd.com">info.monbeef@tavanbogd.com</a>
           <span style="color: #9a958c; font-size: 14px; line-height: 1.5;">Улаанбаатар, Баянгол дүүрэг, 25-р хороо, Үйлдвэрийн төвийн бүс-16010, Энхтайвны өргөн чөлөө 96</span>
@@ -444,25 +509,25 @@
       </div>
       <div class="footer-divider"></div>
       <div class="footer-bottom">
-        <span>© 2026 Шилмэл сүрэг. Бүх эрх хуулиар хамгаалагдсан.</span>
-        <span>Powered by Шилмэл сүрэг</span>
+        <span data-translate="footer.rights">© 2026 Шилмэл сүрэг. Бүх эрх хуулиар хамгаалагдсан.</span>
+        <span data-translate="footer.powered">Powered by Шилмэл сүрэг</span>
       </div>
     <!-- Cart Modal -->
     <div class="cart-modal" id="cartModal">
       <div class="cart-content">
         <div class="cart-header">
-          <h3>Таны сагс</h3>
+          <h3 data-translate="cart.title">Таны сагс</h3>
           <button class="cart-close" id="cartClose">×</button>
         </div>
         <div class="cart-items" id="cartItems">
-          <p class="cart-empty">Сагс хоосон байна</p>
+          <p class="cart-empty" data-translate="cart.empty">Сагс хоосон байна</p>
         </div>
         <div class="cart-footer">
           <div class="cart-total">
-            <span>Нийт:</span>
+            <span data-translate="cart.total">Нийт:</span>
             <span class="cart-total-price" id="cartTotal">0₮</span>
           </div>
-          <button class="btn btn-primary cart-checkout" id="checkoutBtn">Захиалах</button>
+          <button class="btn btn-primary cart-checkout" id="checkoutBtn" data-translate="cart.checkout">Захиалах</button>
         </div>
       </div>
     </div>
@@ -475,7 +540,7 @@
     const recipes = {
       1: {
         title: 'Төгс Стэйк хийх жор',
-        image: 'images/steak-recipe.jpg',
+        image: 'images/hero-beef.jpg',
         ingredients: [
           '500гр Шилмэл сүргийн стэйк (Ribeye эсвэл Tenderloin)',
           '2 хумс сармис',
@@ -499,7 +564,7 @@
       },
       2: {
         title: 'Traditional Бууз',
-        image: 'images/buuz-recipe.jpg',
+        image: 'images/product-1.jpg',
         ingredients: [
           '500гр Шилмэл сүргийн мах (бантангийн мах)',
           '2 аяга гурил',
@@ -521,7 +586,7 @@
       },
       3: {
         title: 'Хуушуур',
-        image: 'images/huushuur-recipe.jpg',
+        image: 'images/product-2.jpg',
         ingredients: [
           '500гр Шилмэл сүргийн мах',
           '2 аяга гурил',
@@ -541,7 +606,7 @@
       },
       4: {
         title: 'Beef Stroganoff',
-        image: 'images/beef-stroganoff-recipe.jpg',
+        image: 'images/detail-2.jpg',
         ingredients: [
           '500гр Шилмэл сүргийн мах (булчингийн мах)',
           '200гр сметан (эсвэл өтгөн цөцгий)',
@@ -564,7 +629,7 @@
       },
       5: {
         title: 'Махтай Цуйван',
-        image: 'images/tsuivan-recipe.jpg',
+        image: 'images/product-3.jpg',
         ingredients: [
           '300гр Шилмэл сүргийн мах',
           '3 аяга гурил',
@@ -586,7 +651,7 @@
       },
       6: {
         title: 'Махны Соустай Спагетти (Bolognese)',
-        image: 'images/bolognese-recipe.jpg',
+        image: 'images/detail-3.jpg',
         ingredients: [
           '400гр Шилмэл сүргийн мах (гүйлгэр мах)',
           '400гр спагетти',
@@ -610,7 +675,7 @@
       },
       7: {
         title: 'Махтай Бантан',
-        image: 'images/bantan-recipe.jpg',
+        image: 'images/product-4.jpg',
         ingredients: [
           '400гр Шилмэл сүргийн мах (нарийн мах)',
           '2 аяга гурил',
@@ -630,7 +695,7 @@
       },
       8: {
         title: 'Roast Beef',
-        image: 'images/roast-beef-recipe.jpg',
+        image: 'images/featured-1.jpg',
         ingredients: [
           '1кг Шилмэл сүргийн гуяны мах',
           '4 хумс сармис',
@@ -652,7 +717,7 @@
       },
       9: {
         title: 'Хорхог',
-        image: 'images/khuushuur-recipe.jpg',
+        image: 'images/featured-2.jpg',
         ingredients: [
           '1кг Шилмэл сүргийн мах (ястай мах)',
           '4 ширхэг төмс',
@@ -672,7 +737,7 @@
       },
       10: {
         title: 'Махтай Такос',
-        image: 'images/tacos-recipe.jpg',
+        image: 'images/featured-3.jpg',
         ingredients: [
           '400гр Шилмэл сүргийн мах (гүйлгэр мах)',
           '8 ширхэг такосын хальс',
@@ -705,22 +770,26 @@
       document.getElementById('modalImage').alt = recipe.title;
       document.getElementById('modalTitle').textContent = recipe.title;
       
+      const ingredientsLabel = translations[currentLang] && translations[currentLang]['recipes.ingredients'] ? translations[currentLang]['recipes.ingredients'] : '📝 Орц';
+      const stepsLabel = translations[currentLang] && translations[currentLang]['recipes.steps'] ? translations[currentLang]['recipes.steps'] : '👨‍🍳 Хийх дараалал';
+      const tipsLabel = translations[currentLang] && translations[currentLang]['recipes.tips'] ? translations[currentLang]['recipes.tips'] : '💡 Зөвлөгөө';
+      
       const content = `
         <div class="recipe-section">
-          <h3>📝 Орц</h3>
+          <h3>${ingredientsLabel}</h3>
           <ul>
             ${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}
           </ul>
         </div>
         <div class="recipe-section">
-          <h3>👨‍🍳 Хийх дараалал</h3>
+          <h3>${stepsLabel}</h3>
           <ol>
             ${recipe.steps.map(s => `<li>${s}</li>`).join('')}
           </ol>
         </div>
         ${recipe.tips ? `
         <div class="recipe-section">
-          <h3>💡 Зөвлөгөө</h3>
+          <h3>${tipsLabel}</h3>
           <p>${recipe.tips}</p>
         </div>
         ` : ''}
