@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Жор - Шилмэл сүрэг</title>
+  <meta name="description" content="Монгол болон Европ хоолны жорууд. Шилмэл сүргийн махаар хийсэн амтат жорууд." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .recipes-hero {
+      background: var(--dark);
+      color: #fff;
+      padding: 80px 40px;
+      text-align: center;
+    }
+    
+    .recipes-hero h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    
+    .recipes-hero p {
+      font-size: 18px;
+      color: #9a958c;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .recipes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .recipe-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    
+    .recipe-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 64px rgba(31, 29, 24, 0.12);
+    }
+    
+    .recipe-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .recipe-content {
+      padding: 24px;
+    }
+    
+    .recipe-tag {
+      display: inline-block;
+      background: var(--orange-soft);
+      color: var(--orange-deep);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .recipe-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    
+    .recipe-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+    
+    .recipe-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .recipe-btn {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .recipe-btn:hover {
+      background: var(--orange-deep);
+    }
+    
+    .recipe-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 100;
+      overflow-y: auto;
+    }
+    
+    .recipe-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    
+    .recipe-modal-content {
+      background: #fff;
+      border-radius: var(--radius);
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .recipe-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .recipe-modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+    
+    .recipe-modal-body {
+      padding: 40px;
+    }
+    
+    .recipe-modal-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .recipe-section {
+      margin-bottom: 32px;
+    }
+    
+    .recipe-section h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--orange);
+    }
+    
+    .recipe-section ul,
+    .recipe-section ol {
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+    
+    .recipe-section li {
+      margin-bottom: 8px;
+    }
+    
+    @media (max-width: 640px) {
+      .recipes-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      
+      .recipes-hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-banner">100'000₮ дээш худалдан авалтад хүргэлт үнэгүй</div>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Шилмэл сүрэг home">
+        <img src="images/logo.png" alt="Шилмэл сүрэг лого" class="brand-logo" onerror="this.style.display='none'" />
+        <div class="brand-text">
+          <strong>Шилмэл сүрэг</strong>
+          <span>Монголын бүтээгдэхүүн</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Нүүр</a>
+        <a href="index.html#about">Бидний тухай</a>
+        <a href="products.html">Бүтээгдэхүүн</a>
+        <a href="recipes.html">Жор</a>
+        <a href="steak-lodge.html">Steak Lodge</a>
+        <a href="index.html#contact">Холбоо барих</a>
+      </nav>
+
+      <div class="header-actions">
+        <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <div class="cart-btn">
+          <svg class="icon-btn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </div>
+        <div class="lang-switch">
+          <button id="mnBtn" type="button" class="active">mn</button>
+          <button id="enBtn" type="button">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="recipes-hero">
+      <h1>Амтат Жорууд</h1>
+      <p>Шилмэл сүргийн махаар хийсэн Монгол болон Европ хоолны жорууд</p>
+    </section>
+
+    <section class="recipes-grid">
+      <article class="recipe-card" data-recipe="1">
+        <img class="recipe-image" src="images/steak-recipe.jpg" alt="Стэйк хийх жор" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Европ</span>
+          <h3 class="recipe-title">Төгс Стэйк хийх жор</h3>
+          <div class="recipe-meta">
+            <span>⏱ 20 мин</span>
+            <span>👤 2 хүн</span>
+            <span>🔥 Дунд зэрэг</span>
+          </div>
+          <p class="recipe-desc">Гадуураа шарж, дотроо шүүслэг байхаар хийсэн төгс стэйк. Грилл эсвэл хайруулын тавган дээр хийж болно.</p>
+          <button class="recipe-btn" onclick="openRecipe(1)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="2">
+        <img class="recipe-image" src="images/buuz-recipe.jpg" alt="Буузны жор" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Монгол</span>
+          <h3 class="recipe-title">Тraditional Бууз</h3>
+          <div class="recipe-meta">
+            <span>⏱ 90 мин</span>
+            <span>👤 6-8 хүн</span>
+            <span>🔥 Дунд зэрэг</span>
+          </div>
+          <p class="recipe-desc">Монгол гэрийн уламжлалт бууз. Шилмэл сүргийн махаар хийсэн амтат буузны жор.</p>
+          <button class="recipe-btn" onclick="openRecipe(2)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="3">
+        <img class="recipe-image" src="images/huushuur-recipe.jpg" alt="Хуушуурны жор" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Монгол</span>
+          <h3 class="recipe-title">Хуушуур</h3>
+          <div class="recipe-meta">
+            <span>⏱ 60 мин</span>
+            <span>👤 4-6 хүн</span>
+            <span>🔥 Дунд зэрэг</span>
+          </div>
+          <p class="recipe-desc">Шарсан шүүслэг хуушуур. Гэрийн нөхцөлд хийхэд тохиромжтой жор.</p>
+          <button class="recipe-btn" onclick="openRecipe(3)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="4">
+        <img class="recipe-image" src="images/beef-stroganoff-recipe.jpg" alt="Бeef Stroganoff" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Европ</span>
+          <h3 class="recipe-title">Beef Stroganoff</h3>
+          <div class="recipe-meta">
+            <span>⏱ 40 мин</span>
+            <span>👤 4 хүн</span>
+            <span>🔥 Дунд зэрэг</span>
+          </div>
+          <p class="recipe-desc">Орос гаралтай алдартай хоол. Шарсан махыг сметан соустай хослуулсан амтат хоол.</p>
+          <button class="recipe-btn" onclick="openRecipe(4)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="5">
+        <img class="recipe-image" src="images/tsuivan-recipe.jpg" alt="Цуйваны жор" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Монгол</span>
+          <h3 class="recipe-title">Махтай Цуйван</h3>
+          <div class="recipe-meta">
+            <span>⏱ 50 мин</span>
+            <span>👤 4-6 хүн</span>
+            <span>🔥 Хялбар</span>
+          </div>
+          <p class="recipe-desc">Монгол гэрийн цуйван. Гурил, мах, ногоог хослуулсан хоол.</p>
+          <button class="recipe-btn" onclick="openRecipe(5)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="6">
+        <img class="recipe-image" src="images/bolognese-recipe.jpg" alt="Болонезе" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Европ</span>
+          <h3 class="recipe-title">Махны Соустай Спагетти (Bolognese)</h3>
+          <div class="recipe-meta">
+            <span>⏱ 60 мин</span>
+            <span>👤 4-6 хүн</span>
+            <span>🔥 Дунд зэрэг</span>
+          </div>
+          <p class="recipe-desc">Италийн алдартай хоол. Шилмэл махаар хийсэн баялаг соустай спагетти.</p>
+          <button class="recipe-btn" onclick="openRecipe(6)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="7">
+        <img class="recipe-image" src="images/bantan-recipe.jpg" alt="Бантан" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Монгол</span>
+          <h3 class="recipe-title">Махтай Бантан</h3>
+          <div class="recipe-meta">
+            <span>⏱ 45 мин</span>
+            <span>👤 4 хүн</span>
+            <span>🔥 Хялбар</span>
+          </div>
+          <p class="recipe-desc">Монголын уламжлалт бантан. Шилмэл махаар хийсэн шүүслэг бантан.</p>
+          <button class="recipe-btn" onclick="openRecipe(7)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="8">
+        <img class="recipe-image" src="images/roast-beef-recipe.jpg" alt="Roast Beef" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Европ</span>
+          <h3 class="recipe-title">Roast Beef</h3>
+          <div class="recipe-meta">
+            <span>⏱ 120 мин</span>
+            <span>👤 6-8 хүн</span>
+            <span>🔥 Хүнд</span>
+          </div>
+          <p class="recipe-desc">Шөөгтэй махыг зөвхөн духан дээр жигнэсэн Roast Beef. Тусгай зоогт тохиромжтой.</p>
+          <button class="recipe-btn" onclick="openRecipe(8)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="9">
+        <img class="recipe-image" src="images/khuushuur-recipe.jpg" alt="Хорхог" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Монгол</span>
+          <h3 class="recipe-title">Хорхог</h3>
+          <div class="recipe-meta">
+            <span>⏱ 90 мин</span>
+            <span>👤 6-8 хүн</span>
+            <span>🔥 Хүнд</span>
+          </div>
+          <p class="recipe-desc">Монголын уламжлалт хорхог. Чулуун дээр хийсэн онцгой амт.</p>
+          <button class="recipe-btn" onclick="openRecipe(9)">Жор харах</button>
+        </div>
+      </article>
+
+      <article class="recipe-card" data-recipe="10">
+        <img class="recipe-image" src="images/tacos-recipe.jpg" alt="Махтай Такос" />
+        <div class="recipe-content">
+          <span class="recipe-tag">Европ</span>
+          <h3 class="recipe-title">Махтай Такос</h3>
+          <div class="recipe-meta">
+            <span>⏱ 35 мин</span>
+            <span>👤 4 хүн</span>
+            <span>🔥 Хялбар</span>
+          </div>
+          <p class="recipe-desc">Мексикийн алдартай такос. Шилмэл махаар хийсэн амтат такосны жор.</p>
+          <button class="recipe-btn" onclick="openRecipe(10)">Жор харах</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Recipe Modal -->
+    <div class="recipe-modal" id="recipeModal">
+      <div class="recipe-modal-content">
+        <button class="recipe-modal-close" onclick="closeRecipe()">&times;</button>
+        <img class="recipe-modal-image" id="modalImage" src="" alt="" />
+        <div class="recipe-modal-body">
+          <h2 class="recipe-modal-title" id="modalTitle"></h2>
+          <div id="modalContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <strong>Шилмэл сүрэг</strong>
+          <p>Эрүүл ахуйн шаардлага хангасан-Эрүүл хүнс</p>
+          <div class="social-row">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Тусламж</h4>
+          <a href="#">Үйлчилгээний нөхцөл</a>
+          <a href="#">Нууцлалын бодлого</a>
+          <a href="#">Хүргэлтийн нөхцөл</a>
+          <a href="#">Санал гомдол</a>
+        </div>
+        <div class="footer-links">
+          <h4>Холбоос</h4>
+          <a href="index.html">Нүүр</a>
+          <a href="products.html">Бүтээгдэхүүн</a>
+          <a href="recipes.html">Жор</a>
+          <a href="steak-lodge.html">Steak Lodge</a>
+          <a href="index.html#contact">Холбоо барих</a>
+        </div>
+        <div class="footer-links">
+          <h4>Холбоо барих</h4>
+          <a href="tel:+97675332222">+976 7533 2222</a>
+          <a href="mailto:info.monbeef@tavanbogd.com">info.monbeef@tavanbogd.com</a>
+          <span style="color: #9a958c; font-size: 14px; line-height: 1.5;">Улаанбаатар, Баянгол дүүрэг, 25-р хороо, Үйлдвэрийн төвийн бүс-16010, Энхтайвны өргөн чөлөө 96</span>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span>© 2026 Шилмэл сүрэг. Бүх эрх хуулиар хамгаалагдсан.</span>
+        <span>Powered by Шилмэл сүрэг</span>
+      </div>
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+      <div class="cart-content">
+        <div class="cart-header">
+          <h3>Таны сагс</h3>
+          <button class="cart-close" id="cartClose">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <p class="cart-empty">Сагс хоосон байна</p>
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Нийт:</span>
+            <span class="cart-total-price" id="cartTotal">0₮</span>
+          </div>
+          <button class="btn btn-primary cart-checkout" id="checkoutBtn">Захиалах</button>
+        </div>
+      </div>
+    </div>
+
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const recipes = {
+      1: {
+        title: 'Төгс Стэйк хийх жор',
+        image: 'images/steak-recipe.jpg',
+        ingredients: [
+          '500гр Шилмэл сүргийн стэйк (Ribeye эсвэл Tenderloin)',
+          '2 хумс сармис',
+          '50гр масло',
+          'Оливын тос',
+          'Далайн давс, хар перец',
+          'Розмарин эсвэл thyme (зажилгаа)'
+        ],
+        steps: [
+          'Махыг өрөөний температурт (20-30 минут) байлгана.',
+          'Махны 2 талаа далайн давс, хар перецээр амтлана.',
+          'Хайруулын тавгыг өндөр гал дээр халаана (230°C хүртэл).',
+          'Оливын тос хийж, махыг тавганд тавина.',
+          '3-4 минутын дотор нэг талаа шарна (түлхэлт хийхгүй).',
+          'Эргүүлж нөгөө талаа 3-4 минут шарна (Medium-rare).',
+          'Сүүлийн 1 минутанд масло, сармис, розмарин хийж, маслоор махаа өнхрүүлнэ.',
+          'Махыг тавганд гаргаж, 5 минут амраана (амт нь тарахын тулд).',
+          'Хэрчээд, дуртай гарниртайгаа хамт өрнө.'
+        ],
+        tips: 'Medium-rare: 52-57°C, Medium: 57-63°C. Термометр ашиглах нь илүү найдвартай.'
+      },
+      2: {
+        title: 'Traditional Бууз',
+        image: 'images/buuz-recipe.jpg',
+        ingredients: [
+          '500гр Шилмэл сүргийн мах (бантангийн мах)',
+          '2 аяга гурил',
+          '1 ширхэг сонгино',
+          '2 хумс сармис',
+          'Давс, перец',
+          '150мл ус'
+        ],
+        steps: [
+          'Гурилд бага зэргийн давс хийж, бүлээн усаар зуурна. 30 минут амраана.',
+          'Махыг маш нарийн жижгэлж өрмөг болгоно.',
+          'Сонгино, сармисыг жижиглэж, махтай хольж амтлана.',
+          'Гурилаа жижиг хэсгүүд болгож мушгина.',
+          'Мушгисан гурил дундуур махаа тавьж, бууз маягаар хуульна.',
+          'Бууз хайрцаганд 20-25 минут чанана.',
+          'Халуун байхад нь амтална.'
+        ],
+        tips: 'Махаа хэт нухахгүй, мушгисан хэсгийн ирмэгийг нимгэн хийвэл илүү амттай болно.'
+      },
+      3: {
+        title: 'Хуушуур',
+        image: 'images/huushuur-recipe.jpg',
+        ingredients: [
+          '500гр Шилмэл сүргийн мах',
+          '2 аяга гурил',
+          '1 ширхэг сонгино',
+          'Давс, перец',
+          'Тос (шарахад)'
+        ],
+        steps: [
+          'Гурилаа зуурч, 20 минут амраана.',
+          'Мах, сонгиноо жижиглэж, амтлан хольно.',
+          'Гурилаа тойрог хэлбэрээр мушгина.',
+          'Махаа дунд тавьж, ирмэгийг сайтар шахаж хаана.',
+          'Тос ихтэй хайруулын тавганд алтлаг шаргалтай болтол шарна.',
+          'Цаасан алчуур дээр тавьж, илүү тосыг шингээж авна.'
+        ],
+        tips: 'Хуушуурийг ирмэгээсээ шахаж хаасан эсэхийг сайтар шалгана. Бага зэргийн сүү нэмвэл гурил зөөлөн болно.'
+      },
+      4: {
+        title: 'Beef Stroganoff',
+        image: 'images/beef-stroganoff-recipe.jpg',
+        ingredients: [
+          '500гр Шилмэл сүргийн мах (булчингийн мах)',
+          '200гр сметан (эсвэл өтгөн цөцгий)',
+          '1 ширхэг сонгино',
+          '200гр шөмбөлөөт мөөг',
+          '2 хумс сармис',
+          '50гр масло',
+          '1 хоолны халбага гашуун соус',
+          'Давс, перец'
+        ],
+        steps: [
+          'Махыг нарийн зүсэм болгож бэлтгэнэ.',
+          'Хайруулын тавганд масло хайлааж, махыг хурдан шарж гаргана.',
+          'Мөөг, сонгино, сармисыг нэмж шарна (5-7 минут).',
+          'Махаа буцааж тавганд хийнэ.',
+          'Сметан, гашуун соус нэмж, бага гал дээр 5-7 минут чанана.',
+          'Хэвлэсэн төмс эсвэл будаатай хамт өрнө.'
+        ],
+        tips: 'Махаа хэт болгохгүй, эхлээд хурдан шарчихаад дараа нь буцааж нэмнэ.'
+      },
+      5: {
+        title: 'Махтай Цуйван',
+        image: 'images/tsuivan-recipe.jpg',
+        ingredients: [
+          '300гр Шилмэл сүргийн мах',
+          '3 аяга гурил',
+          '1 ширхэг лууван',
+          '1 ширхэг төмс',
+          '1 ширхэг сонгино',
+          'Бөөрөнхий мөөг',
+          'Давс, перец',
+          'Сойз (соус)'
+        ],
+        steps: [
+          'Гурилаа зуурч, жижиглэж мушгина.',
+          'Мах, ногоо бүгдийг жижиглэж бэлтгэнэ.',
+          'Хайруулын тавганд махаа шарж, ногоо нэмнэ.',
+          'Гурилаа дээр нь тавьж, ус хийж 15-20 минут чанана.',
+          'Гурил болон мах, ногоог сайтар хольж, амтална.'
+        ],
+        tips: 'Гурилаа хэт зузаан хийхгүй, нимгэн мушгих нь илүү амттай.'
+      },
+      6: {
+        title: 'Махны Соустай Спагетти (Bolognese)',
+        image: 'images/bolognese-recipe.jpg',
+        ingredients: [
+          '400гр Шилмэл сүргийн мах (гүйлгэр мах)',
+          '400гр спагетти',
+          '1 лууван',
+          '1 сонгино',
+          '2 хумс сармис',
+          '400гр шаранхай (хальсалсан төмс)',
+          '100гр улаан дарс',
+          '2 хоолны халбага томatoes paste',
+          'Давс, перец, орегано',
+          'Пармезан бяслаг'
+        ],
+        steps: [
+          'Лууван, сонгино, сармисыг жижиглэнэ.',
+          'Хайруулын тавганд махаа шарж, ногоо нэмнэ.',
+          'Шаранхай, томatoes paste, улаан дарс нэмж 30 минут чанана.',
+          'Спагеттиээ давстай усанд чанаж бэлтгэнэ.',
+          'Соус, спагетти хоёроо хольж, пармезан бяслаг цацаж өрнө.'
+        ],
+        tips: 'Соосыг бага гал дээр удаан (1 цаг) чанавал илүү амттай болно.'
+      },
+      7: {
+        title: 'Махтай Бантан',
+        image: 'images/bantan-recipe.jpg',
+        ingredients: [
+          '400гр Шилмэл сүргийн мах (нарийн мах)',
+          '2 аяга гурил',
+          '1 ширхэг сонгино',
+          'Бөөрөнхий мөөг',
+          'Давс, перец',
+          '150мл ус'
+        ],
+        steps: [
+          'Гурилаа зуурч, нимгэн мушгина.',
+          'Мах, сонгино, мөөгийг жижиглэнэ.',
+          'Махаа шарж, ногоо нэмнэ.',
+          'Гурилаа жижиглэн хөрөөдөж, махтайгаа хольж чанана.',
+          'Бэлэн болмогц амталж, халуун байхад нь өрнө.'
+        ],
+        tips: 'Гурилаа хэт удаан чанахгүй, зөөлөн байх хэрэгтэй.'
+      },
+      8: {
+        title: 'Roast Beef',
+        image: 'images/roast-beef-recipe.jpg',
+        ingredients: [
+          '1кг Шилмэл сүргийн гуяны мах',
+          '4 хумс сармис',
+          '100гр масло (зөөлөрсөн)',
+          'Далайн давс, хар перец',
+          'Розмарин, thyme',
+          'Лууван, сонгино (жигнэхэд)'
+        ],
+        steps: [
+          'Махыг өрөөний температурт 1 цаг байлгана.',
+          'Сармис, давс, перец, сойзоор махыг бүрнэ.',
+          'Зуухыг 230°C хүртэл халаана.',
+          'Махыг 15 минут өндөр халуунд шарна.',
+          'Халууныг 160°C болгож, 45-60 минут жигнэнэ (medium-rare).',
+          'Махаа гаргаж, 15-20 минут амраана.',
+          'Ногоотой хамт өрнө, шөлөөр соус хийнэ.'
+        ],
+        tips: 'Термометр ашиглах нь илүү найдвартай. 55°C = Medium-rare.'
+      },
+      9: {
+        title: 'Хорхог',
+        image: 'images/khuushuur-recipe.jpg',
+        ingredients: [
+          '1кг Шилмэл сүргийн мах (ястай мах)',
+          '4 ширхэг төмс',
+          '2 ширхэг лууван',
+          '1 ширхэг сонгино',
+          'Давс, перец',
+          'Чулуу (цэвэрхэн)'
+        ],
+        steps: [
+          'Мах, төмс, лууван, сонгино бүгдийг том хэсгүүдээр жижиглэнэ.',
+          'Чулуугаа гал дээр халааж, халуун байхад нь хорхогны саванд хийнэ.',
+          'Мах, ногоогоо давхарлаж тавина.',
+          'Савны амсарыг сайтар боож, гал дээр тавьж 60-90 минут жигнэнэ.',
+          'Бэлэн болмогц нээгээд, халуун байхад нь амтална.'
+        ],
+        tips: 'Чулууг сайтар халаасны дараа хэрэглэнэ. Савны амсар сайтар боогдсон эсэхийг шалгана.'
+      },
+      10: {
+        title: 'Махтай Такос',
+        image: 'images/tacos-recipe.jpg',
+        ingredients: [
+          '400гр Шилмэл сүргийн мах (гүйлгэр мах)',
+          '8 ширхэг такосын хальс',
+          '1 ширхэг сонгино',
+          '1 ширхэг улаан чинжүү',
+          '1 ширхэг помидор',
+          'Авокадо',
+          'Лайм',
+          'Кориандр',
+          'Чили нунтаг, кумин',
+          'Давс, перец'
+        ],
+        steps: [
+          'Махаа жижиглэн шарж, чили, кумин, давс, перецээр амтлана.',
+          'Сонгино, улаан чинжүү, помидорыг жижиглэнэ.',
+          'Авокадогыг лайм, давстайгаа нухна (гуакамоле).',
+          'Такосын хальсаа халаана.',
+          'Хальсанд мах, ногоо, гуакамоле тавьж өрнө.',
+          'Кориандр, лаймын шүүс цацаж амтална.'
+        ],
+        tips: 'Такосын хальсаа шууд гал дээр биш, хуурай хайруулын тавганд халаах нь илүү сайн.'
+      }
+    };
+
+    function openRecipe(id) {
+      const recipe = recipes[id];
+      if (!recipe) return;
+      
+      document.getElementById('modalImage').src = recipe.image;
+      document.getElementById('modalImage').alt = recipe.title;
+      document.getElementById('modalTitle').textContent = recipe.title;
+      
+      const content = `
+        <div class="recipe-section">
+          <h3>📝 Орц</h3>
+          <ul>
+            ${recipe.ingredients.map(i => `<li>${i}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="recipe-section">
+          <h3>👨‍🍳 Хийх дараалал</h3>
+          <ol>
+            ${recipe.steps.map(s => `<li>${s}</li>`).join('')}
+          </ol>
+        </div>
+        ${recipe.tips ? `
+        <div class="recipe-section">
+          <h3>💡 Зөвлөгөө</h3>
+          <p>${recipe.tips}</p>
+        </div>
+        ` : ''}
+      `;
+      
+      document.getElementById('modalContent').innerHTML = content;
+      document.getElementById('recipeModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeRecipe() {
+      document.getElementById('recipeModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on outside click
+    document.getElementById('recipeModal').addEventListener('click', function(e) {
+      if (e.target === this) closeRecipe();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeRecipe();
+    });
+  </script>
+</body>
+</html>

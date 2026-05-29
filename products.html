@@ -16,6 +16,7 @@
     <!-- Header -->
     <header class="topbar">
       <a class="brand" href="index.html" aria-label="Шилмэл сүрэг home">
+        <img src="images/logo.png" alt="Шилмэл сүрэг лого" class="brand-logo" onerror="this.style.display='none'" />
         <div class="brand-text">
           <strong>Шилмэл сүрэг</strong>
           <span>Монголын бүтээгдэхүүн</span>
@@ -26,6 +27,7 @@
         <a href="index.html">Нүүр</a>
         <a href="index.html#about">Бидний тухай</a>
         <a href="products.html">Бүтээгдэхүүн</a>
+        <a href="recipes.html">Жор</a>
         <a href="steak-lodge.html">Steak Lodge</a>
         <a href="index.html#contact">Холбоо барих</a>
       </nav>
@@ -51,110 +53,97 @@
         <aside class="filters-sidebar">
           <div class="filter-section">
             <h4>ЭРЭМБЭЛЭХ</h4>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Үнэ багаас их</span>
-              </div>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
-                <span>Үнэ ихээс бага</span>
-              </div>
-            </div>
+            <label class="filter-option">
+              <input type="radio" name="sort" value="price-asc" class="filter-checkbox">
+              <span class="checkmark"></span>
+              <span>Үнэ багаас их</span>
+            </label>
+            <label class="filter-option">
+              <input type="radio" name="sort" value="price-desc" class="filter-checkbox">
+              <span class="checkmark"></span>
+              <span>Үнэ ихээс бага</span>
+            </label>
           </div>
           <div class="divider"></div>
           <div class="filter-section">
             <h4>АНГИЛАЛ</h4>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Цул мах</span>
-              </div>
+            <label class="filter-option">
+              <input type="checkbox" value="цул-мах" class="filter-checkbox category-filter">
+              <span class="checkmark"></span>
+              <span>Цул мах</span>
               <span class="filter-count">9</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>Стэйк</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="стэйк" class="filter-checkbox category-filter">
+              <span class="checkmark"></span>
+              <span>Стэйк</span>
               <span class="filter-count">3</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>Багц бүтээгдэхүүн</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="багц" class="filter-checkbox category-filter">
+              <span class="checkmark"></span>
+              <span>Багц бүтээгдэхүүн</span>
               <span class="filter-count">1</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>Ястай мах</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="ястай" class="filter-checkbox category-filter">
+              <span class="checkmark"></span>
+              <span>Ястай мах</span>
               <span class="filter-count">1</span>
-            </div>
+            </label>
           </div>
           <div class="divider"></div>
           <div class="filter-section">
             <h4>ЖИН</h4>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>500гр</span>
-              </div>
+            <label class="filter-option">
+              <input type="checkbox" value="500гр" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>500гр</span>
               <span class="filter-count">4</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>800гр</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="800гр" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>800гр</span>
               <span class="filter-count">1</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-                <span>1кг</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="1кг" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>1кг</span>
               <span class="filter-count">4</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>3кг</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="3кг" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>3кг</span>
               <span class="filter-count">4</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>5кг</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="5кг" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>5кг</span>
               <span class="filter-count">1</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>L/400гр-450гр/</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="400-450" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>L/400гр-450гр/</span>
               <span class="filter-count">2</span>
-            </div>
-            <div class="filter-option">
-              <div class="filter-option-left">
-                <svg class="filter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
-                <span>L/530гр-565гр/</span>
-              </div>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="530-565" class="filter-checkbox weight-filter">
+              <span class="checkmark"></span>
+              <span>L/530гр-565гр/</span>
               <span class="filter-count">1</span>
-            </div>
+            </label>
           </div>
         </aside>
 
         <!-- Products Grid -->
         <div class="products-area">
           <div class="products-grid">
-            <article class="product-card">
+            <article class="product-card" data-category="багц" data-price="184140">
               <div class="product-image"><img src="images/product-1.jpg" alt="Хүүхдийн багц" /></div>
               <div class="product-info">
                 <h4 class="product-name">ХҮҮХДИЙН БАГЦ</h4>
@@ -162,11 +151,11 @@
                 <span class="product-price">184,140₮</span>
                 <div class="product-weight-row">
                   <span class="product-weight">9 бүтээгдэхүүн багтсан</span>
-                  <span class="product-unit-price">184,140₮</span>
                 </div>
+                <button class="btn btn-add-cart" onclick="addToCart('Хүүхдийн багц', 184140, '9 бүтээгдэхүүн')">Сагсанд нэмэх</button>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card" data-category="цул-мах" data-price="23540">
               <div class="product-image"><img src="images/product-2.jpg" alt="Бантангийн мах" /></div>
               <div class="product-info">
                 <h4 class="product-name">БАНТАНГИЙН МАХ</h4>
@@ -174,11 +163,11 @@
                 <span class="product-price">23,540₮</span>
                 <div class="product-weight-row">
                   <span class="product-weight">500гр</span>
-                  <span class="product-unit-price">23,540₮</span>
                 </div>
+                <button class="btn btn-add-cart" onclick="addToCart('Бантангийн мах', 23540, '500гр')">Сагсанд нэмэх</button>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card" data-category="цул-мах" data-price="23210">
               <div class="product-image"><img src="images/product-3.jpg" alt="Нарийн мах" /></div>
               <div class="product-info">
                 <h4 class="product-name">НАРИЙН МАХ</h4>
@@ -186,11 +175,11 @@
                 <span class="product-price">23,210₮</span>
                 <div class="product-weight-row">
                   <span class="product-weight">500гр</span>
-                  <span class="product-unit-price">23,210₮</span>
                 </div>
+                <button class="btn btn-add-cart" onclick="addToCart('Нарийн мах', 23210, '500гр')">Сагсанд нэмэх</button>
               </div>
             </article>
-            <article class="product-card">
+            <article class="product-card" data-category="цул-мах" data-price="23540">
               <div class="product-image"><img src="images/product-4.jpg" alt="Гуляшны мах" /></div>
               <div class="product-info">
                 <h4 class="product-name">ГҮЛЯАШНЫ МАХ</h4>
@@ -198,8 +187,8 @@
                 <span class="product-price">23,540₮</span>
                 <div class="product-weight-row">
                   <span class="product-weight">500гр</span>
-                  <span class="product-unit-price">3кг - 118,300₮</span>
                 </div>
+                <button class="btn btn-add-cart" onclick="addToCart('Гуляшны мах', 23540, '500гр')">Сагсанд нэмэх</button>
               </div>
             </article>
           </div>
@@ -293,6 +282,26 @@
         </article>
       </div>
     </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+      <div class="cart-content">
+        <div class="cart-header">
+          <h3>Таны сагс</h3>
+          <button class="cart-close" id="cartClose">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <p class="cart-empty">Сагс хоосон байна</p>
+        </div>
+        <div class="cart-footer">
+          <div class="cart-total">
+            <span>Нийт:</span>
+            <span class="cart-total-price" id="cartTotal">0₮</span>
+          </div>
+          <button class="btn btn-primary cart-checkout" id="checkoutBtn">Захиалах</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
