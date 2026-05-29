@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="roastbeefGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B0000"/>
+      <stop offset="50%" style="stop-color:#A52A2A"/>
+      <stop offset="100%" style="stop-color:#800000"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#roastbeefGrad)"/>
+  <g transform="translate(400,300)">
+    <ellipse cx="0" cy="20" rx="180" ry="80" fill="#654321" opacity="0.4"/>
+    <path d="M-120,-20 Q-60,-60 0,-40 Q60,-60 120,-20 Q130,20 120,60 Q60,90 0,70 Q-60,90 -120,60 Q-130,20 -120,-20" fill="#8B4513"/>
+    <path d="M-100,-10 Q-50,-45 0,-30 Q50,-45 100,-10 Q110,20 100,50 Q50,75 0,60 Q-50,75 -100,50 Q-110,20 -100,-10" fill="#A0522D"/>
+    <path d="M-80,0 Q-40,-30 0,-20 Q40,-30 80,0 Q90,25 80,45 Q40,65 0,55 Q-40,65 -80,45 Q-90,25 -80,0" fill="#CD853F" opacity="0.6"/>
+    <circle cx="-40" cy="15" r="25" fill="#8B2500" opacity="0.5"/>
+    <circle cx="30" cy="10" r="30" fill="#8B2500" opacity="0.5"/>
+    <circle cx="0" cy="30" r="28" fill="#8B2500" opacity="0.5"/>
+    <path d="M-60,-50 L-50,-60 L-40,-50 Z" fill="#228B22" opacity="0.7"/>
+    <path d="M40,-55 L50,-65 L60,-55 Z" fill="#228B22" opacity="0.7"/>
+    <path d="M-10,-65 L0,-75 L10,-65 Z" fill="#32CD32" opacity="0.6"/>
+  </g>
+  <text x="400" y="520" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#FFF" font-weight="bold">Roast Beef</text>
+  <text x="400" y="555" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#FFDAB9" opacity="0.9">Oven Roasted Premium Beef</text>
+</svg>
